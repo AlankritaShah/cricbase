@@ -20,19 +20,19 @@ class Match(models.Model):
 class PlayerMatch(models.Model):
     PlayerID = models.ForeignKey(Player, on_delete=models.CASCADE)
     MatchID = models.ForeignKey(Match, on_delete=models.CASCADE)
-    Fours = models.IntegerField()
-    Sixes = models.IntegerField()
-    TotalRuns = models.IntegerField()
-    Catches = models.IntegerField()
-    Wickets = models.IntegerField()
-    Overs = models.IntegerField()
+    Fours = models.IntegerField(null=True)
+    Sixes = models.IntegerField(null=True)
+    TotalRuns = models.IntegerField(null=True)
+    Catches = models.IntegerField(null=True)
+    Wickets = models.IntegerField(null=True)
+    Overs = models.IntegerField(null=True)
     Type = models.CharField(max_length=5)
-    Strategy = models.CharField(max_length=10)
+    Strategy = models.CharField(max_length=10, null=True)
 
 class Team(models.Model):
     TeamID = models.IntegerField(primary_key=True)
-    HostGroundID = models.IntegerField()
-    Coach = models.CharField(max_length=20)
+    HostGroundID = models.IntegerField(null=True)
+    Coach = models.CharField(max_length=20, null=True)
 
 class PlayerTeam(models.Model):
     PlayerID = models.ForeignKey(Player, on_delete=models.CASCADE)
